@@ -1,0 +1,57 @@
+=Introduction=
+
+Omegle, as most of you know is a stranger-to-stranger chatting service launched in 2009.
+
+==Basics==
+Omegle users can chat via the following ways:
+  * Simple text,
+  * Video (via a webcam),
+  * "Spy mode" (explained later on),
+and
+  * via Facebook Connect (explained later).
+
+==Structure==
+The Omegle web interface is completely dynamic, and written using JavaScript. It uses the MooTools and SwfObject frameworks, as well as ReCaptcha for anti-spam. The main file we are going to be looking at is omegle.js.
+
+----
+
+=Lets begin=
+==Introduction==
+You may think the Omegle homepage (http://omegle.com) is the only site Omegle can be accessed with, but that's not the case. You see, there are actually *four* Omegle sites (excluding omegle.com). They are:
+  * http://bajor.omegle.com
+  * http://cardassia.omegle.com
+  * http://promenade.omegle.com
+and, recently,
+  * http://odo-bucket.omegle.com
+
+They are accessed via a frame on omegle's homepage, with the following comment:
+
+ <!-- Yes, I'm using frames as a load balancing measure. Yes, I know
+ this is horrible, insane, absurd, ridiculous, stupid, and
+ broken. It's just a temporary stop-gap measure, though. -->
+
+For security reasons, your app should choose a random server for each cat session.
+
+==The API==
+===URLs===
+The following can be accessed from *any* server, including omegle.com:
+|| *URL* || *Description* ||
+||/start||Begins a new chat session||
+||/send||Sends a chat message||
+||/typing||Sends a "typing" event||
+||/stoppedtyping||Sends a "stoppedTyping" event||
+||/recaptcha||Completes a ReCaptcha||
+||/disconnect||Disconnects a chat session||
+
+===Parameters===
+|| *URL* || *Available params* || *Description* ||
+|| */start* ||rcs||Default value in omegle.js is 1. Not sure what this does||
+|| ||spid||Some sort of ID. Function unknown.||
+|| ||ask||Question to ask in Spy mode.||
+|| ||fbaccesstoken||The Facebook access token for use in Connect mode.||
+|| ||wantsspy||If the user wants to initiate Omegle in Spy mode||
+|| ||cansavequestion||If the user wants to save the Spy mode question||
+|| */send*
+
+==IDs and events==
+===Beginning a chat===
