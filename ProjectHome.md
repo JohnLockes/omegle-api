@@ -1,0 +1,1 @@
+This is an unofficial API for omegle.
